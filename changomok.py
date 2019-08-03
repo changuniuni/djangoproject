@@ -1,6 +1,4 @@
 import numpy as np
-check=0
-
 array=np.zeros((19,19))
 
 dy = [-1, -1, 0, 1, 1, 1, 0, -1]
