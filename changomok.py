@@ -250,6 +250,29 @@ def ccheck_upleft(current_color,cur_xpos,cur_ypos):  #왼쪽위 방향 탐색
             coun+=1
             break
 
+def ccheck_middlecross(current_color,cur_xpos,cur_ypos):  #십자가 중앙
+    global coun    
+
+    if current_color == 1000:
+        if array[cur_ypos][cur_xpos+1] ==1 and array[cur_ypos][cur_xpos-1] ==1 and array[cur_ypos-1][cur_xpos] ==1 and array[cur_ypos+1][cur_xpos] ==1:
+            coun+=2 #상하좌우 십자가 체크
+             
+    else:
+        if array[cur_ypos][cur_xpos+1] ==2 and array[cur_ypos][cur_xpos-1] ==2 and array[cur_ypos-1][cur_xpos] ==2 and array[cur_ypos+1][cur_xpos] ==2 : #상하좌우 체크
+            coun+=2
+
+def ccheck_middledia(current_color,cur_xpos,cur_ypos):  #대각선 중앙
+    global coun    
+
+    if current_color == 1000:
+        if array[cur_ypos-1][cur_xpos+1] ==1 and array[cur_ypos+1][cur_xpos+1] ==1 and array[cur_ypos+1][cur_xpos-1] ==1 and array[cur_ypos-1][cur_xpos-1] ==1:
+            coun+=2 #대각선 십자가 체크
+             
+    else:
+        if array[cur_ypos-1][cur_xpos+1] ==2 and array[cur_ypos+1][cur_xpos+1] ==2 and array[cur_ypos+1][cur_xpos-1] ==2 and array[cur_ypos-1][cur_xpos-1] ==2: #대각선 체크
+            coun+=2
+
+
                       
 check = False
 while check == False:
@@ -266,11 +289,12 @@ while check == False:
     ccheck_up(a,xpos,ypos)
     ccheck_upleft(a,xpos,ypos)
     ccheck_upright(a,xpos,ypos)
+    ccheck_middlecross(a,xpos,ypos)
+    ccheck_middledia(a,xpos,ypos)
     print(coun)
 
     if coun>=2:
         print('안됨')
-        
         continue
        
     #a = int(input("B or W?"))
